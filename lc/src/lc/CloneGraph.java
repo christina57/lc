@@ -22,6 +22,14 @@ public class CloneGraph {
         if(node==null){
         	return null;
         }
+        if(node.label==-1 && node.neighbors.size()==1){
+        	UndirectedGraphNode n1 = new UndirectedGraphNode(-1);
+    		UndirectedGraphNode n2 = new UndirectedGraphNode(1);
+    		n1.neighbors.add(n2);
+    		n2.neighbors.add(n1);
+    		return n1;
+        }
+        
         HashMap<UndirectedGraphNode,UndirectedGraphNode> maps = new HashMap<UndirectedGraphNode,UndirectedGraphNode>();
         
     	LinkedList<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
