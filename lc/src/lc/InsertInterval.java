@@ -9,10 +9,10 @@ public class InsertInterval {
 		// TODO Auto-generated method stub
 
 	}
-    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+    /*public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         Iterator<Interval> iterator = intervals.iterator();
         
-    }
+    }*/
 }
 
 class Interval {
