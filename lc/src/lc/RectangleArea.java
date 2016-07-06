@@ -14,5 +14,6 @@ public class RectangleArea {
         int area2 = (G-E) * (H-F);
         int overlap = ((Math.min(C,G)<Math.max(A,E))?0:(Math.min(C,G) - Math.max(A,E))) * ((Math.min(D,H)<Math.max(B,F))?0:(Math.min(D,H) - Math.max(B,F)));
         return (area1 - overlap + area2);
+
     }
 }
