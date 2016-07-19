@@ -9,32 +9,27 @@ public class LongestValidParentheses {
 
 	}
     public int longestValidParentheses(String s) {
-        if(s==null || s.length()==0){
-        	return 0;
+        int len = s.length();
+        if(len<2){
+            return 0;
         }
-        
-        Stack<Integer> stack = new Stack<Integer>();
-        
-        for(int i=0;i<s.length();i++){
-        	char c = s.charAt(i);
-        	if(c == ')' && !stack.isEmpty() && s.charAt(stack.peek()) == '('){
-        		stack.pop();
-        	} else {
-        		stack.push(i);
-        	}
+        int result = 0;
+
+        Stack<Integer> idx = new Stack<Integer>();
+        idx.push(-1);
+
+        for(int i=0;i<len;i++){
+            if(s.charAt(i) == '('){
+                idx.push(i);
+            } else {
+                if(idx.size()>1 && s.charAt(idx.peek()) == '('){
+                    idx.pop();
+                    result = Math.max(result, i - idx.peek());
+                } else {
+                    idx.push(i);
+                }
+            }
         }
-        
-        int max =0;
-        stack.push(s.length());
-        int cur = 0;
-        while(!stack.isEmpty()){
-        	cur = stack.pop();
-        	if(!stack.isEmpty()){
-        		int pre = stack.peek();
-        		max = Math.max(max, cur-pre-1);
-        	}
-        }
-        max = Math.max(max, cur);
-        return max;
+        return result;
     }
 }
